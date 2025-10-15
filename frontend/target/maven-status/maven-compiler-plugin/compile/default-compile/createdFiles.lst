@@ -1,0 +1,6 @@
+com\pavillion\libraryfx\service\BookApiService$1.class
+com\pavillion\libraryfx\service\BookApiService$LocalDateAdapter.class
+com\pavillion\libraryfx\LibraryFxApplication.class
+com\pavillion\libraryfx\service\BookApiService.class
+com\pavillion\libraryfx\controller\MainController.class
+com\pavillion\libraryfx\model\Book.class

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.pavillion.libraryfx.controller.MainController"
+            prefHeight="600.0" prefWidth="900.0"
+            stylesheets="@../css/styles.css">
+
+    <!-- Top: Title Bar -->
+    <top>
+        <VBox styleClass="header">
+            <Label text="Library Management System" styleClass="title"/>
+            <Separator/>
+        </VBox>
+    </top>
+
+    <!-- Center: Table View -->
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <!-- Search Bar -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Search:" styleClass="label-bold"/>
+                <TextField fx:id="searchField" promptText="Search by title or author..."
+                           HBox.hgrow="ALWAYS" styleClass="search-field"/>
+                <Button text="↻ Refresh" onAction="#loadBooks" styleClass="refresh-button"/>
+            </HBox>
+
+            <!-- Table -->
+            <TableView fx:id="bookTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="titleColumn" text="Title" prefWidth="200"/>
+                    <TableColumn fx:id="authorColumn" text="Author" prefWidth="150"/>
+                    <TableColumn fx:id="isbnColumn" text="ISBN" prefWidth="120"/>
+                    <TableColumn fx:id="publishedDateColumn" text="Published Date" prefWidth="120"/>
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+            </TableView>
+        </VBox>
+    </center>
+
+    <!-- Right: Form Panel -->
+    <right>
+        <VBox spacing="15" styleClass="form-panel">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <Label text="Book Details" styleClass="form-title"/>
+            <Separator/>
+
+            <!-- Form Fields -->
+            <VBox spacing="8">
+                <Label text="Title:" styleClass="label-bold"/>
+                <TextField fx:id="titleField" promptText="Enter book title"/>
+
+                <Label text="Author:" styleClass="label-bold"/>
+                <TextField fx:id="authorField" promptText="Enter author name"/>
+
+                <Label text="ISBN:" styleClass="label-bold"/>
+                <TextField fx:id="isbnField" promptText="10 or 13 digits"/>
+
+                <Label text="Published Date:" styleClass="label-bold"/>
+                <DatePicker fx:id="publishedDatePicker" promptText="Select date"
+                            maxWidth="Infinity"/>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <!-- Action Buttons -->
+            <VBox spacing="8">
+                <Button fx:id="addButton" text="➕ Add Book" onAction="#handleAdd"
+                        maxWidth="Infinity" styleClass="add-button"/>
+                <Button fx:id="updateButton" text="✏ Update Book" onAction="#handleUpdate"
+                        maxWidth="Infinity" styleClass="update-button"/>
+                <Button fx:id="deleteButton" text="🗑 Delete Book" onAction="#handleDelete"
+                        maxWidth="Infinity" styleClass="delete-button"/>
+                <Button fx:id="clearButton" text="✖ Clear Form" onAction="#handleClear"
+                        maxWidth="Infinity" styleClass="clear-button"/>
+            </VBox>
+        </VBox>
+    </right>
+
+</BorderPane>
